@@ -13,3 +13,13 @@ Welcome
     </form>
 </div>
 </div>
+
+
+update(frm:NgForm){
+  this.tempdata=[];
+  this.http.put(`https://todearhemant.pythonanywhere.com/patient/api/patients/${frm.value.id}/`,frm.value).subscribe(data=>{
+    this.patients=this.patients.map((ob:any)=>ob.id==frm.value.id?data:ob)
+  })
+  this.editStatus=false;
+}
+
