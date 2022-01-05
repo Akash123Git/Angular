@@ -1,30 +1,11 @@
 Welcome
-<div *ngIf="editStatus">
-    <div *ngFor="let pat of tempdata;">
-    <form #frm="ngForm" (submit)="update(frm)">
-        <input type="number" placeholder="Patient_id" name="id" [ngModel]="pat.id" ngModel readonly> &nbsp;
-        <input type='text' placeholder="Name" [ngModel]="pat.name" name="name" ngModel> &nbsp;
-        <input type='number' placeholder="Age" [ngModel]="pat.age" name="age" ngModel> &nbsp;
-        <select name='gender' [ngModel]="pat.gender" ngModel>
-            <option value='male'>Male</option>
-            <option value='female'>FeMale</option>
-        </select>&nbsp;
-        <button type='submit'>update</button>
-    </form>
-</div>
-</div>
 
+/*mongodb connection*/
+server.port=8585
 
-update(frm:NgForm){
-  this.tempdata=[];
-  this.http.put(`https://todearhemant.pythonanywhere.com/patient/api/patients/${frm.value.id}/`,frm.value).subscribe(data=>{
-    this.patients=this.patients.map((ob:any)=>ob.id==frm.value.id?data:ob)
-  })
-  this.editStatus=false;
-}
-
-edit(pid:number){
-  this.tempdata=this.patients.filter((pat:any)=>pat.id==pid)
-  this.editStatus=true;
-  console.log(this.tempdata);
-}
+spring.data.mongodb.host=127.0.0.1
+spring.data.mongodb.port=27017
+spring.data.mongodb.authentication-database=admin
+spring.data.mongodb.username=root
+spring.data.mongodb.password=root123
+spring.data.mongodb.database=HospitalDB
