@@ -23,3 +23,8 @@ update(frm:NgForm){
   this.editStatus=false;
 }
 
+edit(pid:number){
+  this.tempdata=this.patients.filter((pat:any)=>pat.id==pid)
+  this.editStatus=true;
+  console.log(this.tempdata);
+}
