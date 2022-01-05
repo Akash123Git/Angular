@@ -1,1 +1,15 @@
 Welcome
+<div *ngIf="editStatus">
+    <div *ngFor="let pat of tempdata;">
+    <form #frm="ngForm" (submit)="update(frm)">
+        <input type="number" placeholder="Patient_id" name="id" [ngModel]="pat.id" ngModel readonly> &nbsp;
+        <input type='text' placeholder="Name" [ngModel]="pat.name" name="name" ngModel> &nbsp;
+        <input type='number' placeholder="Age" [ngModel]="pat.age" name="age" ngModel> &nbsp;
+        <select name='gender' [ngModel]="pat.gender" ngModel>
+            <option value='male'>Male</option>
+            <option value='female'>FeMale</option>
+        </select>&nbsp;
+        <button type='submit'>update</button>
+    </form>
+</div>
+</div>
