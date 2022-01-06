@@ -1,6 +1,7 @@
 # Angular
 
 #Mongodb connection with spring Boot:
+
 server.port=portnumber
 
 spring.data.mongodb.host=127.0.0.1
