@@ -1,0 +1,48 @@
+<h2>Home Component</h2>
+
+<form #frm="ngForm" (submit)="save(frm)">
+    <input type='text' placeholder="Name" name="name" ngModel> &nbsp;
+    <input type='number' placeholder="Age" name="age" ngModel> &nbsp;
+    <select name='gender' ngModel>
+        <option value='male'>Male</option>
+        <option value='female'>FeMale</option>
+    </select>&nbsp;
+    <button type='submit'>Save</button>
+</form>
+
+<div *ngIf="editStatus">
+    <form #frm="ngForm" (submit)="update(frm)">
+        <input type="text" placeholder="Patient_id" name="id" [ngModel]="tempdata.id" ngModel readonly> &nbsp;
+        <input type='text' placeholder="Name" [ngModel]="tempdata.name" name="name" ngModel> &nbsp;
+        <input type='number' placeholder="Age" [ngModel]="tempdata.age" name="age" ngModel> &nbsp;
+        <select name='gender' [ngModel]="tempdata.gender" ngModel>
+            <option value='male'>Male</option>
+            <option value='female'>FeMale</option>
+        </select>&nbsp;
+        <button type='submit'>update</button>
+    </form>
+</div>
+
+<hr>
+<table align='center' cellpadding="10" cellspacing='5'>
+    <tr>
+        <th>S.No.</th>
+        <th>Patient Id</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Operation</th>
+    </tr>
+
+    <tr *ngFor="let pat of patients; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{pat.id}}</td>
+        <td>{{pat.name}}</td>
+        <td>{{pat.age}}</td>
+        <td>{{pat.gender}}</td>
+        <th>
+            <button (click)="delPatient(pat.id)">Delete</button>
+            <button (click)="edit(pat)">edit</button>
+        </th>
+    </tr>
+</table>

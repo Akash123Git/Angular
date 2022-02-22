@@ -1,0 +1,52 @@
+<p>demo works!</p>
+
+<p>Student Details</p>
+
+<input type="text" #PName placeholder="Product name">
+<input type="number" #Price placeholder="Price">
+<input type="text" #Company placeholder="Company">
+<select #Image>
+    <option value="image1.jpg">image1</option>
+    <option value="image2.jpeg">image2</option>
+    <option value="image3.jpeg">image3</option>
+    <option value="image4.jpeg">image4</option>
+    <option value="image5.jpeg">image5</option>
+</select>
+<button (click)="process(PName,Price,Company,Image)">Add</button>
+
+<br><br>
+<table border="1">
+   <tr>
+    <td>Sl.no</td>
+    <td>Product Name</td><br>
+    <td>Price</td><br>
+    <td>Company</td><br>
+    <td>image</td><br>
+    <td>Operation</td><br>
+       </tr>
+    <tr *ngFor="let p of Product;let i=index;">
+    <td>{{i+1}}</td>
+    <td>{{p.pname}}</td><br>
+    <td>{{p.price}}</td><br>
+    <td>{{p.company}}</td><br>
+    <td>
+        <img src="/assets/img/{{p.image}}" height="250" width="250" alt="">
+        <br>
+        <select #ImageUpdate>
+            <option value="image1.jpg">image1</option>
+            <option value="image2.jpeg">image2</option>
+            <option value="image3.jpeg">image3</option>
+            <option value="image4.jpeg">image4</option>
+            <option value="image5.jpeg">image5</option>
+        </select>
+        <button (click)="updateImage(p,ImageUpdate)">updateimage</button>
+    </td><br>
+
+    <td><button (click)="deleteProduct(p.pid)">delete</button></td>
+</tr>
+
+</table>
+
+
+<br><br>
+
